@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=xFreeRdpConnect
+Comment=Hurma
+GenericName=
+Keywords=rdp
+Exec=python3.4 /home/bars/.viewrdp/rdp.py
+Terminal=false
+Type=Application
+Icon=/home/bars/.viewrdp/icon.png
+Path=
+Categories=
+NoDisplay=false
