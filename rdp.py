@@ -105,7 +105,7 @@ password_label=Label(root,text='password',bg="#DF7401",font='12')
 password_label.grid(row=3,column=2,columnspan=2)
 
 wsize=Entry(root,width=20,bd=3,font='12')
-wsinsert=str(root.winfo_screenwidth()-50) + "x" + str(root.winfo_screenheight()-30)
+wsinsert=str(root.winfo_screenwidth()-50) + "x" + str(root.winfo_screenheight()-50)
 wsize.insert(0, wsinsert)
 wsize.grid(row=4,column=1)
 
