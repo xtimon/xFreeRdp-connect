@@ -17,7 +17,8 @@ def my_init(action,value):
 		connect_list.remove(value)
 		connections_list.set("")
 	if action == "save":
-		connect_list.append(value)
+		if value not in connect_list:
+			connect_list.append(value)
 		connections_list.set(value)	
 	connections_list.configure(values = connect_list)
 	button_name()
