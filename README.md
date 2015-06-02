@@ -21,7 +21,7 @@ Create application label:
 
 **The configuration file will be stored here:**
 
-    ~./viewrdp/config.conf
+    ~/.viewrdp/config.conf
 
 **An example configuration file:**
 
