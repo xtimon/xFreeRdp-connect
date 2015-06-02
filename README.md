@@ -3,6 +3,10 @@ Simple minimail GUI for xFreeRdp based on Python 3 Tkinter
 
 **Installation instructions:**
 
+Install FreeRDP
+
+    sudo apt-get install FreeRDP
+
 Clone this project:  
 
     git clone https://github.com/xtimon/xFreeRdp-connect.git ~/.viewrdp
