@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk
-import os, subprocess, configparser
+import os, subprocess, configparser, time
 
 config_file = str(os.getenv("HOME"))+"/.viewrdp/config.conf"
 connect_list = []
@@ -51,15 +51,9 @@ def connect():
 		else:
 			connect_wsize = wsize.get()
 		proc = subprocess.Popen(["xfreerdp", "-u", username.get(), "-p", password.get(), "-g", connect_wsize, "--ignore-certificate","--plugin", "cliprdr", "--plugin", "rdpdr", "--data", "disk:MyPC:" + os.getenv("HOME"), "--", ipaddr.get()], stdout = subprocess.PIPE)
-		if not proc.returncode == 0:
-			error_window = Tk()
-			error_window.configure(bg="#DF7401")
-			error_window.title("FreeRDP error message:")
-			error_window.resizable(0,0)
-			Message = Text(error_window, height=15, width=55)
-			Message.insert('end', proc.communicate()[0])
-			Message.pack()
-			error_window.mainloop()
+		root.destroy()
+		proc.wait()
+		subprocess.Popen(["notify-send", "FreeRDP error message:", str(proc.communicate()[0])], stdout=subprocess.PIPE)
 
 def get_connection_name():
 	def save_connect():
