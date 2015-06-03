@@ -1,6 +1,6 @@
 from tkinter import *
 from tkinter import ttk
-import os, subprocess, configparser, time
+import os, subprocess, configparser
 
 config_file = str(os.getenv("HOME"))+"/.viewrdp/config.conf"
 connect_list = []
