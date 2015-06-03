@@ -46,7 +46,15 @@ def insert_values(value):
 
 def connect():
 	if ipaddr.get() and username.get() and password.get():
-		subprocess.Popen(["xfreerdp", "-u", username.get(), "-p", password.get(), "-g", wsize.get(), "--ignore-certificate","--plugin", "cliprdr", "--plugin", "rdpdr", "--data", "disk:MyPC:" + os.getenv("HOME"), "--", ipaddr.get()], stdout=subprocess.PIPE)
+		if not wsize.get():
+			connect_wsize="800x600"
+		else:
+			connect_wsize=wsize.get()
+		proc=subprocess.Popen(["xfreerdp", "-u", username.get(), "-p", password.get(), "-g", connect_wsize, "--ignore-certificate","--plugin", "cliprdr", "--plugin", "rdpdr", "--data", "disk:MyPC:" + os.getenv("HOME"), "--", ipaddr.get()], stdout=subprocess.PIPE)
+		if not proc.returncode == 0:
+			subprocess.Popen(["notify-send", "FreeRDP error:", str(proc.communicate()[0])], stdout=subprocess.PIPE)
+		else:
+			subprocess.Popen(["notify-send", "You are connected to "+str(ipaddr.get()), "by user: "+str(username.get())], stdout=subprocess.PIPE)
 
 def get_connection_name():
 	def save_connect():
