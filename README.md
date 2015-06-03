@@ -3,17 +3,13 @@ Simple minimail GUI for FreeRdp based on Python 3 Tkinter
 
 **Installation instructions:**
 
-Install FreeRDP
+Preparation:
 
-    sudo apt-get install FreeRDP
+    sudo apt-get install FreeRDP python3-tk notify-osd
 
 Clone this project:  
 
     git clone https://github.com/xtimon/xFreeRdp-connect.git ~/.viewrdp
-
-Install python3 Tkinter: 
-
-    sudo apt-get install python3-tk
 
 Prepare application label:
 
