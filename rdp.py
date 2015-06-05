@@ -53,7 +53,7 @@ def connect():
 		proc = subprocess.Popen(["xfreerdp", "-u", username.get(), "-p", password.get(), "-g", connect_wsize, "--ignore-certificate","--plugin", "cliprdr", "--plugin", "rdpdr", "--data", "disk:MyPC:" + os.getenv("HOME"), "--", ipaddr.get()], stdout = subprocess.PIPE)
 		root.destroy()
 		proc.wait()
-		subprocess.Popen(["notify-send", "FreeRDP error message:", str(proc.communicate()[0])], stdout=subprocess.PIPE)
+		subprocess.Popen(["notify-send", "FreeRDP message:", str(proc.communicate()[0])], stdout=subprocess.PIPE)
 
 def get_connection_name():
 	def save_connect():
