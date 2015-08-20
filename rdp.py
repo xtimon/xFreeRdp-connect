@@ -5,8 +5,8 @@ import os, subprocess, configparser
 
 config_file = str(os.getenv("HOME"))+"/.viewrdp/config.conf"
 icon_file = str(os.getenv("HOME"))+"/.viewrdp/icon.png"
-fwd_path = str(os.getenv("HOME"))
-fix_wsize = "" #example 1700x1000
+fwd_path = str(os.getenv("HOME")) #example "/tmp/"
+fix_wsize = "" #example "1700x1000"
 
 connect_list = []
 connect_list.append("")
