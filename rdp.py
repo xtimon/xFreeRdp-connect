@@ -41,8 +41,6 @@ def delete_values():
     wsize.delete(0, 'end')
     if fix_wsize:
         wsize.insert(0, fix_wsize)
-    else:
-        wsize.insert(0, wsinsert)
     button_name()
 
 def insert_values(value):
@@ -51,9 +49,7 @@ def insert_values(value):
         username.insert(0, config.get(connections_list.get(),'username'))
         ipaddr.insert(0, config.get(connections_list.get(),'ip_address'))
         password.insert(0, config.get(connections_list.get(),'password'))
-        if fix_wsize:
-            wsize.insert(0, fix_wsize)
-        else:
+        if not fix_wsize:
             wsize.insert(0, config.get(connections_list.get(),'wsize'))
 
 def connect():
