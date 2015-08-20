@@ -5,6 +5,9 @@ import os, subprocess, configparser
 
 config_file = str(os.getenv("HOME"))+"/.viewrdp/config.conf"
 icon_file = str(os.getenv("HOME"))+"/.viewrdp/icon.png"
+fwd_path = str(os.getenv("HOME"))
+fix_wsize = "" #example 1700x1000
+
 connect_list = []
 connect_list.append("")
 config = configparser.ConfigParser()
@@ -44,15 +47,18 @@ def insert_values(value):
         username.insert(0, config.get(connections_list.get(),'username'))
         ipaddr.insert(0, config.get(connections_list.get(),'ip_address'))
         password.insert(0, config.get(connections_list.get(),'password'))
-        wsize.insert(0, config.get(connections_list.get(),'wsize'))
+        if fix_wsize:
+            wsize.insert(0, fix_wsize)
+        else:
+            wsize.insert(0, config.get(connections_list.get(),'wsize'))
 
 def connect():
     if ipaddr.get() and username.get() and password.get():
-        if not wsize.get():
-            connect_wsize = "800x600"
-        else:
+        if wsize.get():
             connect_wsize = wsize.get()
-        proc = subprocess.Popen(["xfreerdp", "-u", username.get(), "-p", password.get(), "-g", connect_wsize, "--ignore-certificate","--plugin", "cliprdr", "--plugin", "rdpdr", "--data", "disk:MyPC:" + os.getenv("HOME"), "--", ipaddr.get()], stdout = subprocess.PIPE)
+        else:
+            connect_wsize = "800x600"
+        proc = subprocess.Popen(["xfreerdp", "-u", username.get(), "-p", password.get(), "-g", connect_wsize, "--ignore-certificate","--plugin", "cliprdr", "--plugin", "rdpdr", "--data", "disk:MyPC:" + fwd_path, "--", ipaddr.get()], stdout = subprocess.PIPE)
         root.destroy()
         proc.wait()
         subprocess.Popen(["notify-send", "-i", icon_file, "FreeRDP message:", str(proc.communicate()[0])], stdout=subprocess.PIPE)
@@ -70,7 +76,10 @@ def get_connection_name():
         with open(config_file, 'w') as configfile:
                 config.write(configfile)
         my_init("delete",connection_name.get())
-        wsinsert=str("1700x1000")
+        if fix_wsize:
+            wsize.insert(0, fix_wsize)
+        else:
+            wsize.insert(0, wsinsert)
         save_window.destroy()
     save_window = Tk()
     save_window.configure(bg="#DF7401")
@@ -116,8 +125,10 @@ password_label.grid(row=3,column=2,columnspan=2)
 
 wsize=Entry(root,width=20,bd=3,font='12')
 wsinsert=str(root.winfo_screenwidth()-70) + "x" + str(root.winfo_screenheight()-70)
-#wsinsert=str("1700x1000")
-wsize.insert(0, wsinsert)
+if fix_wsize:
+    wsize.insert(0, fix_wsize)
+else:
+    wsize.insert(0, wsinsert)
 wsize.grid(row=4,column=1)
 
 wsize_label=Label(root,text='window size',bg="#DF7401",font='12')
