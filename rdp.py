@@ -39,6 +39,10 @@ def delete_values():
     ipaddr.delete(0, 'end')
     password.delete(0, 'end')
     wsize.delete(0, 'end')
+    if fix_wsize:
+        wsize.insert(0, fix_wsize)
+    else:
+        wsize.insert(0, wsinsert)
     button_name()
 
 def insert_values(value):
@@ -76,10 +80,6 @@ def get_connection_name():
         with open(config_file, 'w') as configfile:
                 config.write(configfile)
         my_init("delete",connection_name.get())
-        if fix_wsize:
-            wsize.insert(0, fix_wsize)
-        else:
-            wsize.insert(0, wsinsert)
         save_window.destroy()
     save_window = Tk()
     save_window.configure(bg="#DF7401")
