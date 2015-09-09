@@ -136,6 +136,7 @@ wsize_label.grid(row=4,column=2,columnspan=2)
 connections_list = ttk.Combobox(width=22,values = connect_list,height=20)
 connections_list.grid(row=5,column=1)
 connections_list.bind("<<ComboboxSelected>>",insert_values)
+connections_list.focus_set()
 
 get_connection_name=Button(root,text='save',width=4,font='12',bg="#0B3B17",fg="#F6E3CE",command=get_connection_name)
 get_connection_name.grid(row=5,column=2)
