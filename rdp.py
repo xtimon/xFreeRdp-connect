@@ -21,10 +21,12 @@ def my_init(action,value):
         delete_values()
         connect_list.remove(value)
         connections_list.set("")
+        ipaddr.focus_set()
     if action == "save":
         if value not in connect_list:
             connect_list.append(value)
-        connections_list.set(value)    
+        connections_list.set(value)
+        connect.focus_set()
     connections_list.configure(values = connect_list)
     button_name()
 
@@ -51,6 +53,7 @@ def insert_values(value):
         password.insert(0, config.get(connections_list.get(),'password'))
         if not fix_wsize:
             wsize.insert(0, config.get(connections_list.get(),'wsize'))
+    connect.focus_set()
 
 def connect():
     if ipaddr.get() and username.get() and password.get():
