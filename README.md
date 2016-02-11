@@ -26,13 +26,11 @@ Create application label:
 **An example configuration file:**
 
     [Connection_name]
-    wsize = 1700x1000
     ip_address = 192.168.10.10
     username = User
     password = Password
     
     [Connection_name2]
-    wsize = 1700x1000
     ip_address = 192.168.10.11:3122
     username = User2
     password = Password2
