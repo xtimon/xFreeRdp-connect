@@ -36,6 +36,7 @@ config = configparser.ConfigParser()
 if os.path.isfile(config_file):
     config.read_file(open(config_file))
     connect_list.extend(config.sections())
+    connect_list.sort()
 
 
 def my_init(action, value):
