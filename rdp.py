@@ -25,6 +25,7 @@ icon_file = "{}/.viewrdp/icon.png".format(homepath)
 # example: icon_file =
 
 bg_color = "#DF7401"
+labels_color = "#EDE9E9"
 save_button_color = "#0B3B17"
 connect_button_color = "#61380B"
 delete_button_color = "#B40404"
@@ -148,26 +149,26 @@ root.minsize(300, 135)
 ipaddr = Entry(root, width=20, bd=3, font='12')
 ipaddr.grid(row=1, column=1)
 
-ipaddr_label = Label(root, text='ip address', bg=bg_color, font='12')
+ipaddr_label = Label(root, text='ip address', bg=bg_color, font='12', fg=labels_color)
 ipaddr_label.grid(row=1, column=2, columnspan=2)
 
 username = Entry(root, width=20, bd=3, font='12')
 username.grid(row=2, column=1)
 
-username_label = Label(root, text='username', bg=bg_color, font='12')
+username_label = Label(root, text='username', bg=bg_color, font='12', fg=labels_color)
 username_label.grid(row=2, column=2, columnspan=2)
 
 password = Entry(root, width=20, bd=3, show="*", font='12')
 password.grid(row=3, column=1)
 
-password_label = Label(root, text='password', bg=bg_color, font='12')
+password_label = Label(root, text='password', bg=bg_color, font='12', fg=labels_color)
 password_label.grid(row=3, column=2, columnspan=2)
 
 wsize = Entry(root, width=20, bd=3, font='12')
 wsize.insert(0, window_size)
 wsize.grid(row=4, column=1)
 
-wsize_label = Label(root, text='window size', bg=bg_color, font='12')
+wsize_label = Label(root, text='window size', bg=bg_color, font='12', fg=labels_color)
 wsize_label.grid(row=4, column=2, columnspan=2)
 
 connections_list = ttk.Combobox(width=22, values=connect_list, height=20)
