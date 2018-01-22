@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=xFreeRdpConnect
-Comment=Hurma
+Comment=Connect to another computer via RDP
 GenericName=
 Keywords=rdp
 Exec=/home/user/.viewrdp/rdp.py
